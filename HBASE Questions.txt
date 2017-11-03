@@ -1,0 +1,12 @@
+1. How many maximum number of columns can be added to HBase table?
+
+ANS : restriction on column count would also probably depend on the file format, ORC having indexes and predicate pushdown does not behave as a Text file would. ORC has configurations for number of rows that are grouped together for an index.
+
+2. Why columns are not defined at the time of table creation in HBase?
+
+ANS : Column names are not definined at the time of table creation,they are derived from source table.
+
+3. What happens internally when new data gets inserted into HBase table?
+
+ANS:When you put data into HBase, a timestamp is required. The timestamp can be generated automatically by the RegionServer or can be supplied by you. The timestamp must be unique per version of a given cell, because the timestamp identifies the version. To modify a previous version of a cell, for instance, you would issue a Put with a different value for the data itself, but the same timestamp.
+
